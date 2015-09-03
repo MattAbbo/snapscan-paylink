@@ -1,0 +1,147 @@
+<head>
+    <title>Paylink</title>
+    <link rel="stylesheet" type="text/css" href="site.css">
+</head>
+<body>
+
+  <div class="content">
+      <h1>Create a SnapScan Paylink</h1>
+    
+    <div class="boxer">
+	<div class="box-row">
+		<div class="box"><label>Merchant Id*:</label></div>
+		<div class="box"><input id="merchantId" type="text" placeholder="e.g. STB1234"></input></div>
+        <br><br>
+	</div>
+	<div class="box-row">
+		<div class="box"><label>Amount owed:</label></div>
+		<div class="box"><input id="amountOwed" type="text" placeholder="e.g. R500.00"></input></div>
+        <br><br>
+	</div>
+	<div class="box-row">
+		<div class="box"><label>Reference:</label></div>
+		<div class="box"><input id="reference" type="text" placeholder="e.g. Order12345"></input></div>
+        <br><br>
+	</div>
+    </div>
+      
+    <button id="generateButton">Create Link</button>
+<br><br>
+
+<div id="qr-link-output" class="content-output" style="visibility: hidden">
+<label>Your Paylink:</label>
+    <input id="output" width="400px"></input>
+    <input type="button" value="View pretty version" onclick="window.open(qrLink)" />
+<br><br>
+<a target="_blank" id="qrLink">
+  <img id="qrImage">
+</a>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+    // TO DO
+    // CSS
+    // clear and hide on second click
+    // copy text to clip board ; http://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
+    // Email to customer
+    // merchant ID populates from URL
+    // generate a QR code
+    // only number input
+    // SMS text for Mr Delivery - probably pre-filled based on deploy?
+    // Share to: Whatsapp, Twitter http://w3lessons.info/2015/03/14/how-to-share-content-on-whatsapp-using-jquery/
+    
+    
+    // on page load
+    $('#merchantId').val('');
+    $("qr-link-output").hide();
+    
+    //button : create link   
+  $('#generateButton').click(function() {
+      var merchantId = $('#merchantId').val();    
+      var amountOwed = $('#amountOwed').val();
+      var reference = $('#reference').val();
+      var output = generate(merchantId, amountOwed, reference);  
+      var qrImage = (generateQR(merchantId, amountOwed, reference));
+      var page=document.getElementById('qr-link-output');
+      
+      if (merchantId) {
+      $('#output').val(output);
+      $('#output').select();
+      $('#qrImage').attr("src",qrImage)
+      $('#snapscan-qr-image').attr("src",qrImage)
+      $('#qrLink').attr("href",output)
+      page.style.visibility='visible';
+      $('#amountOwed').val('');
+      $('#reference').val('');
+      
+      } 
+      else {
+      alert("Please enter a merchantId to create a link")
+      }
+      
+      function copyToClipboard(text) {
+        window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
+      }
+      
+      // $('#merchantId').val(decodeURIComponent($.urlParam('merchantId')));
+  });
+    
+    // get parameter from URL
+    $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return results[1] || 0;
+    }
+    }
+       
+    // generate PayLink
+    function generate(merchantId, amountOwed, reference) {
+        var paylink = "https://pos.snapscan.io/qr/" + merchantId
+        
+        if (amountOwed || reference) {
+        paylink = paylink + "?";
+            
+        if (amountOwed) {
+        paylink = paylink + "&amount=" + amountOwed*100;
+        }
+          
+        if (reference) {
+        paylink = paylink + "&id=" + reference;
+        }
+            
+        }
+        
+        return paylink;
+    }
+    
+    // generate link for QR code
+    function generateQR(merchantId, amountOwed, reference) {
+        var qrlink = "https://pos.snapscan.io/qr/" + merchantId + '.svg'
+        
+        if (amountOwed !== null || reference !== null) {
+        qrlink = qrlink + "?";
+            
+        if (amountOwed !== null) {
+        qrlink = qrlink + "&amount=" + amountOwed*100;
+        }
+          
+        if (reference !== null) {
+        qrlink = qrlink + "&id=" + reference;
+        }
+            
+        }
+        
+        qrlink = qrlink + "&snap_code_size=125";
+        
+        return qrlink;
+    }
+    
+    
+</script>
+
+</body>
