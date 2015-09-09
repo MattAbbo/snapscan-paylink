@@ -4,8 +4,8 @@
     <title>SnapScan QR Generator</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="site.css">  
 </head>
     
@@ -34,16 +34,18 @@
     
     <div id="qr-link-output" class="form-group center actions" style="visibility: hidden">
     <div class="form-group">
-        <label>Your paylink</label>
-        <input id="output" width="400px"></input>
+        <label><b>Your QR code and paylink</b></label>
     </div>
     
         <a target="_blank" id="qrLink">
             <img id="qrImage">
-            <br><br>
+            <br>
         </a>
+        
+        <input id="output" type="text"></input>
+        <br>
     
-        <input type="button" class="download-btn btn" value="View pretty version" onclick="window.open(qrLink)" />
+        <input type="button" class="btn" value="Open link in new tab" onclick="window.open(qrLink)" />
     
     </div>
     </div>
@@ -151,7 +153,7 @@
             
         }
         
-        qrlink = qrlink + "&snap_code_size=125";
+        qrlink = qrlink + "&snap_code_size=250";
         
         return qrlink;
     }

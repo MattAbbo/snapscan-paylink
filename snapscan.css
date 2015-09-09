@@ -1,4 +1,7 @@
-@font-face{font-family:ProximaNova;src:url(/assets/ProximaNova-Semibold-a5bc4e03ec7b06cab20e06c0abc4c0b2.otf);font-weight:bold}@font-face{font-family:ProximaNova;src:url(/assets/ProximaNova-Regular-7c0aab9b89570cc5c14fd41c49a329be.otf);font-weight:normal}@font-face{font-family:ProximaNova;src:url(/assets/ProximaNova-Light-26675e8d34cf8706cbd830e48cf4629d.otf);font-weight:lighter}html{font-size:14px}header{height:40px;background-size:120px}
+@font-face{font-family:ProximaNova;src:url(/assets/ProximaNova-Semibold-a5bc4e03ec7b06cab20e06c0abc4c0b2.otf);font-weight:bold}@font-face{font-family:ProximaNova;src:url(/assets/ProximaNova-Regular-7c0aab9b89570cc5c14fd41c49a329be.otf);font-weight:normal}@font-face{font-family:ProximaNova;src:url(/assets/ProximaNova-Light-26675e8d34cf8706cbd830e48cf4629d.otf);
+    
+
+font-weight:lighter}html{font-size:14px}header{height:40px;background-size:120px}
 
 @media only screen and (max-device-width: 480px){html{font-size:16px}header{height:60px;background-size:150px}header 
     
