@@ -26,32 +26,27 @@
         <label>Reference (optional)</label>
 		<input id="reference" type="text" placeholder="e.g. Order12345"></input>
 	</div>
-    <div class="form-group center actions">  
-        <div class="btn">
-            <a id="generateButton" class="btn" download="qr-code.jpg">Create Link</a>
+    <div class="form-group center download-action">  
+        <div class="btn-shadow">
+            <a id="generateButton" class="download-btn btn" download="qr-code.jpg">Create Link</a>
         </div>
     </div>
     
     <div id="qr-link-output" class="form-group center actions" style="visibility: hidden">
-<label>Your Paylink:</label>
-    <input id="output" width="400px"></input>
-    <input type="button" value="View pretty version" onclick="window.open(qrLink)" />
-<br><br>
-<a target="_blank" id="qrLink">
-  <img id="qrImage">
-</a>
-</div>
-
-<div class="qr-code">
-                <div class="generated-qr"></div>
-                <canvas class="qr-canvas"></canvas>
-                <div class="form-group center download-action">
-                    <div class="btn-shadow">
-                        <a class="download-btn btn" download="qr-code.jpg">Download</a>
-                    </div>
-                </div>
+    <div class="form-group">
+        <label>Your paylink</label>
+        <input id="output" width="400px"></input>
     </div>
     
+        <a target="_blank" id="qrLink">
+            <img id="qrImage">
+            <br><br>
+        </a>
+    
+        <input type="button" class="download-btn btn" value="View pretty version" onclick="window.open(qrLink)" />
+    
+    </div>
+    </div>
     </div>
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
