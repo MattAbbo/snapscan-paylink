@@ -28,13 +28,13 @@
 	</div>
     <div class="form-group center download-action">  
         <div class="btn-shadow">
-            <a id="generateButton" class="download-btn btn" download="qr-code.jpg">Create Link</a>
+            <a id="generateButton" class="download-btn btn" download="qr-code.jpg">Create QR and Paylink</a>
         </div>
     </div>
     
     <div id="qr-link-output" class="form-group center actions" style="visibility: hidden">
     <div class="form-group">
-        <label><b>Your QR code and paylink</b></label>
+        <h2>Your QR code and Paylink</h2>
     </div>
     
         <a target="_blank" id="qrLink">
@@ -42,24 +42,23 @@
             <br>
         </a>
         
-        <input id="output" type="text"></input>
+    <div class="qr-link-output">
+        <input  id="output" type="text"></input>
         <br>
-    
         <input type="button" class="btn" value="Open link in new tab" onclick="window.open(qrLink)" />
+    </div>
+    
+        
     
     </div>
     </div>
     </div>
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="scripts/vendor/qrcode.min.js"></script>
-<script src="scripts/app.js"></script>
+
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
-    // TO DO
-    // CSS
-    // clear and hide on second click
     // copy text to clip board ; http://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
     // Email to customer
     // merchant ID populates from URL
@@ -68,6 +67,8 @@
     // SMS text for Mr Delivery - probably pre-filled based on deploy?
     // Share to: Whatsapp, Twitter http://w3lessons.info/2015/03/14/how-to-share-content-on-whatsapp-using-jquery/
     // change
+    // <script src="scripts/vendor/qrcode.min.js">
+    // <script src="scripts/app.js">
     
     
     // on page load
@@ -98,12 +99,11 @@
       alert("Please enter a merchantId to create a link")
       }
       
-      function copyToClipboard(text) {
+    });
+    
+    function copyToClipboard(text) {
         window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
       }
-      
-      // $('#merchantId').val(decodeURIComponent($.urlParam('merchantId')));
-  });
     
     // get parameter from URL
     $.urlParam = function(name){
