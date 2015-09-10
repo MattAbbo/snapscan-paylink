@@ -20,7 +20,7 @@
 	</div>
 	<div class="form-group">
 		<label>Amount (optional)</label>
-		<input id="amountOwed" type="text" placeholder="e.g. R500.00"></input>
+		<input id="amountOwed" type="number" placeholder="e.g. R500.00"></input>
 	</div>
 	<div class="form-group">
         <label>Reference (optional)</label>
@@ -48,10 +48,6 @@
         <a data-text="Click this link to pay me using SnapScan" id="whatsappShare" class="whatsapp w3_whatsapp_btn w3_whatsapp_btn_large">Share on Whatsapp</a>
         <input type="button" class="btn" value="Open link in new tab" onclick="window.open(qrLink)" style="display: none"/>
     </div>
-    
-    
-
-    
     </div>
     </div>
     </div>
@@ -60,7 +56,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
-    // scroll to bottom of page
+    // scroll to bottom of page after generate
     // copy text to clip board ; http://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
     // Share to: Whatsapp, Twitter http://w3lessons.info/2015/03/14/how-to-share-content-on-whatsapp-using-jquery/
     // remove QR and open link button when on mobile
