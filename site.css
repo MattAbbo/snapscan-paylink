@@ -156,7 +156,6 @@ input[type=number]:focus {
 }
 
  .w3_whatsapp_btn {
-    background-image: url('icon.png');
     border: 1px solid rgba(0, 0, 0, 0.1);
     display: inline-block !important;
     position: relative;
@@ -171,7 +170,7 @@ input[type=number]:focus {
     background-repeat: no-repeat;
     line-height: 1.2;
     text-decoration: none;
-    text-align: left;
+    text-align: center;
 }
 
 .w3_whatsapp_btn_small {
@@ -192,7 +191,7 @@ input[type=number]:focus {
     font-size: 16px;
     background-size: 20px;
     background-position: 5px 5px;
-    padding: 8px 6px 8px 30px;
+    padding: 8px 6px 8px 8px;
     color: #fff;
 }
 

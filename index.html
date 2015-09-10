@@ -34,10 +34,10 @@
     
     <div id="qr-link-output" class="form-group center actions" style="visibility: hidden">
     <div class="form-group">
-        <h2>Your QR code and Paylink</h2>
+        <h2>Your Paylink</h2>
     </div>
     
-        <a target="_blank" id="qrLink">
+        <a target="_blank" id="qrLink" style="display: none">
             <img id="qrImage">
             <br>
         </a>
@@ -45,7 +45,8 @@
     <div class="qr-link-output">
         <input  id="output" type="text"></input>
         <br>
-        <input type="button" class="btn" value="Open link in new tab" onclick="window.open(qrLink)" />
+        <a data-text="Click this link to pay me using SnapScan" id="whatsappShare" class="whatsapp w3_whatsapp_btn w3_whatsapp_btn_large">Share on Whatsapp</a>
+        <input type="button" class="btn" value="Open link in new tab" onclick="window.open(qrLink)" style="display: none"/>
     </div>
     
     
@@ -53,9 +54,6 @@
     
     </div>
     </div>
-
-    <a data-text="Click this link to pay me using SnapScan" id="whatsappShare" class="whatsapp w3_whatsapp_btn w3_whatsapp_btn_large">Share</a>
-
     </div>
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
