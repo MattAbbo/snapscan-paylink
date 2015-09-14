@@ -1,4 +1,4 @@
-// scroll to bottom of page after generate
+/* scroll to bottom of page after generate
 // copy text to clip board ; http://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
 // Share to: Whatsapp, Twitter http://w3lessons.info/2015/03/14/how-to-share-content-on-whatsapp-using-jquery/
 // BulkSMS : http://developer.bulksms.com/eapi/overview.html
@@ -10,16 +10,10 @@
 // SMS text for Mr Delivery - probably pre-filled based on deploy?
 // change
 // <script src="scripts/vendor/qrcode.min.js">
-// <script src="scripts/app.js">
-
-
-// on page load
-$('#merchantId').val('');
-$("qr-link-output").hide();
+// <script src="scripts/app.js"> */
 
 // whatsapp share button
 $(document).ready(function() {
-
 var isMobile = {
 Android: function() {
     return navigator.userAgent.match(/Android/i);
