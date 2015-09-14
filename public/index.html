@@ -1,18 +1,18 @@
 <!doctype html>
-<html class="no-js" ng-app="webapp">  
+<html class="no-js" ng-app="webapp">
 <head>
     <title>SnapScan Paylink Generator</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="site.css">  
+    <link rel="stylesheet" type="text/css" href="css/site.css">  
 </head>
-    
+
 <body>
   <div class="box">
       <h1>Create a SnapScan Paylink</h1>
-    
+
     <div class="inner">
 	<div class="form-group">
         <label>SnapCode (required)</label>
@@ -26,22 +26,22 @@
         <label>Reference (optional)</label>
 		<input id="reference" type="text" placeholder="e.g. Order12345"></input>
 	</div>
-    <div class="form-group center download-action">  
+    <div class="form-group center download-action">
         <div class="btn-shadow">
             <a id="generateButton" class="download-btn btn" download="qr-code.jpg">Create Paylink</a>
         </div>
     </div>
-    
+
     <div id="qr-link-output" class="form-group center actions" style="visibility: hidden">
     <div class="form-group">
         <h2>Your Paylink</h2>
     </div>
-    
+
         <a target="_blank" id="qrLink" style="display: none">
             <img id="qrImage">
             <br>
         </a>
-        
+
     <div class="qr-link-output">
         <input  id="output" type="text"></input>
         <br>
@@ -51,7 +51,7 @@
     </div>
     </div>
     </div>
-    
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -69,12 +69,12 @@
     // change
     // <script src="scripts/vendor/qrcode.min.js">
     // <script src="scripts/app.js">
-    
-    
+
+
     // on page load
     $('#merchantId').val('');
     $("qr-link-output").hide();
-    
+
     // whatsapp share button
     $(document).ready(function() {
 
@@ -112,16 +112,16 @@ var isMobile = {
 
     });
 });
-    
-    //button : create link   
+
+    //button : create link
   $('#generateButton').click(function() {
-      var merchantId = $('#merchantId').val();    
+      var merchantId = $('#merchantId').val();
       var amountOwed = $('#amountOwed').val();
       var reference = $('#reference').val();
-      var output = generate(merchantId, amountOwed, reference);  
+      var output = generate(merchantId, amountOwed, reference);
       var qrImage = (generateQR(merchantId, amountOwed, reference));
       var page=document.getElementById('qr-link-output');
-      
+
       if (merchantId) {
       $('#output').val(output);
       $('#output').select();
@@ -132,18 +132,18 @@ var isMobile = {
       page.style.visibility='visible';
       $('#amountOwed').val('');
       $('#reference').val('');
-      
-      } 
+
+      }
       else {
       alert("Please enter a merchantId to create a link")
       }
-      
+
     });
-    
+
     function copyToClipboard(text) {
         window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
       }
-    
+
     // get parameter from URL
     $.urlParam = function(name){
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -154,50 +154,50 @@ var isMobile = {
        return results[1] || 0;
     }
     }
-       
+
     // generate PayLink
     function generate(merchantId, amountOwed, reference) {
         var paylink = "https://pos.snapscan.io/qr/" + merchantId
-        
+
         if (amountOwed || reference) {
         paylink = paylink + "?";
-            
+
         if (amountOwed) {
         paylink = paylink + "&amount=" + amountOwed*100;
         }
-          
+
         if (reference) {
         paylink = paylink + "&id=" + reference;
         }
-            
+
         }
-        
+
         return paylink;
     }
-    
+
     // generate link for QR code
     function generateQR(merchantId, amountOwed, reference) {
         var qrlink = "https://pos.snapscan.io/qr/" + merchantId + '.svg'
-        
+
         if (amountOwed !== null || reference !== null) {
         qrlink = qrlink + "?";
-            
+
         if (amountOwed !== null) {
         qrlink = qrlink + "&amount=" + amountOwed*100;
         }
-          
+
         if (reference !== null) {
         qrlink = qrlink + "&id=" + reference;
         }
-            
+
         }
-        
+
         qrlink = qrlink + "&snap_code_size=250";
-        
+
         return qrlink;
     }
-    
-    
+
+
 </script>
 
 </body>
