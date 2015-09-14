@@ -58,6 +58,8 @@ $('#generateButton').click(function() {
   var qrImage = (generateQR(merchantId, amountOwed, reference));
   var page=document.getElementById('qr-link-output');
 
+  sms_client(output, "27724605771");
+
   if (merchantId) {
   $('#output').val(output);
   $('#output').select();
@@ -91,6 +93,16 @@ else{
 }
 }
 
+
+function sms_client(paylink, number) {
+    $.ajax({
+      type: "POST",
+      url: '/send_link',
+      data : JSON.stringify({ paylink: paylink, client_number: number}),
+      dataType: 'json',
+      contentType: 'application/json'
+    });
+}
 // generate PayLink
 function generate(merchantId, amountOwed, reference) {
     var paylink = "https://pos.snapscan.io/qr/" + merchantId
