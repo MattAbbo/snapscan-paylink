@@ -20,7 +20,6 @@ post '/send_link' do
 
     service = Net::SMS::BulkSMS::Service.new('xxx', 'xxx', 'safrica')
     result = service.send(paylink, client_number)
-    debugger
 
     "#{client_number} --- #{paylink}"
 end
