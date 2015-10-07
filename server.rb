@@ -9,9 +9,9 @@ use Rack::Auth::Basic do |username, password|
   username == 'mrdelivery' && password == 'order now'
 end
 
-get '/' do
-    erb :index
-end
+# get '/' do
+#  @merchantId = params[:merchantId] erb :index
+# end
 
 post '/send_link' do
     json_request =  JSON.parse(request.body.read.to_s)
